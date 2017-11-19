@@ -1,0 +1,20 @@
+galaxy_info:
+  author: nakahiro386
+  description: ansible role apt for ubuntu
+
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  # https://galaxy.ansible.com/api/v1/platforms/
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+
+  galaxy_tags:
+    - system
+    - apt
+
+dependencies: []

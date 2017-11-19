@@ -1,0 +1,7 @@
+#
+# {{ ansible_managed }}
+deb http://{{ nakahiro386_apt_server }}/ubuntu/ {{ nakahiro386_apt_distribution }} {{ nakahiro386_apt_components | join(" ")}}
+deb http://{{ nakahiro386_apt_updates_server }}/ubuntu/ {{ nakahiro386_apt_distribution }}-updates {{ nakahiro386_apt_components | join(" ")}}
+deb http://{{ nakahiro386_apt_backports_server }}/ubuntu/ {{ nakahiro386_apt_distribution }}-backports {{ nakahiro386_apt_components | join(" ")}}
+deb http://{{ nakahiro386_apt_security_server }}/ubuntu/ {{ nakahiro386_apt_distribution }}-security {{ nakahiro386_apt_components | join(" ")}} 
+

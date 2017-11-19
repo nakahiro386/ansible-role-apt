@@ -1,0 +1,53 @@
+---
+# tasks file for nakahiro386.apt
+- block:
+  - name: deploy apt sources.list
+    template:
+      src: sources.list
+      dest: "{{ nakahiro386_apt_sources_list_path }}"
+      owner: "{{ nakahiro386_apt_sources_list_owner }}"
+      group: "{{ nakahiro386_apt_sources_list_group }}"
+      mode: "{{ nakahiro386_apt_sources_list_mode }}"
+      backup: yes
+    register: sources_list
+
+  - name: apt update cache if sources.list changed
+    apt:
+      update_cache: yes
+    when:
+      - not ansible_check_mode
+      - sources_list.changed
+
+  - name: "Only run 'update_cache=yes' if the last one is more than {{ nakahiro386_apt_cache_valid_time }} seconds ago"
+    apt:
+      update_cache: yes
+      cache_valid_time: "{{ nakahiro386_apt_cache_valid_time }}"
+
+  - name: Install the packages.
+    apt:
+      name: "{{item}}"
+      state: present
+    with_items: "{{ nakahiro386_apt_present_packages }}"
+
+  - name: Remove the packages.
+    apt:
+      name: "{{item}}"
+      state: absent
+    with_items: "{{ nakahiro386_apt_absent_packages }}"
+
+  - name: Update all packages to the latest version
+    apt:
+      upgrade: "{{ nakahiro386_apt_upgrade }}"
+
+  - name: Remove useless packages from the cache
+    apt:
+      autoclean: "{{ nakahiro386_apt_autoclean }}"
+
+  - name: Remove dependencies that are no longer required
+    apt:
+      autoremove: "{{ nakahiro386_apt_autoremove }}"
+
+  when:
+    - ansible_pkg_mgr == 'apt'
+    - ansible_distribution == 'Ubuntu'
+  tags: nakahiro386.apt
