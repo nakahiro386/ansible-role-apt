@@ -25,15 +25,13 @@
 
   - name: Install the packages.
     apt:
-      name: "{{item}}"
+      name: "{{ nakahiro386_apt_present_packages }}"
       state: present
-    with_items: "{{ nakahiro386_apt_present_packages }}"
 
   - name: Remove the packages.
     apt:
-      name: "{{item}}"
+      name: "{{ nakahiro386_apt_absent_packages }}"
       state: absent
-    with_items: "{{ nakahiro386_apt_absent_packages }}"
 
   - name: Update all packages to the latest version
     apt:
