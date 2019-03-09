@@ -1,20 +1,6 @@
 ---
 # defaults file for nakahiro386.apt
 nakahiro386_apt_sources_list_path: "/etc/apt/sources.list"
-nakahiro386_apt_sources_list_owner: "root"
-nakahiro386_apt_sources_list_group: "root"
-nakahiro386_apt_sources_list_mode: "u=rw,g=r,o=r"
-
-nakahiro386_apt_server: "jp.archive.ubuntu.com"
-nakahiro386_apt_updates_server: "jp.archive.ubuntu.com"
-nakahiro386_apt_backports_server: "jp.archive.ubuntu.com"
-nakahiro386_apt_security_server: "security.ubuntu.com"
-nakahiro386_apt_distribution: "{{ ansible_distribution_release }}"
-nakahiro386_apt_components:
-  - 'main'
-  - 'restricted'
-  - 'universe'
-  - 'multiverse'
 
 nakahiro386_apt_cache_valid_time: 3600
 

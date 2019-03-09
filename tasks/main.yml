@@ -1,13 +1,12 @@
 ---
 # tasks file for nakahiro386.apt
 - block:
-  - name: deploy apt sources.list
-    template:
-      src: sources.list
+
+  - name: replace sources.list
+    replace:
       dest: "{{ nakahiro386_apt_sources_list_path }}"
-      owner: "{{ nakahiro386_apt_sources_list_owner }}"
-      group: "{{ nakahiro386_apt_sources_list_group }}"
-      mode: "{{ nakahiro386_apt_sources_list_mode }}"
+      regexp: 'http://[^ ]+/ubuntu/'
+      replace: 'mirror://mirrors.ubuntu.com/mirrors.txt'
       backup: yes
     register: sources_list
 
