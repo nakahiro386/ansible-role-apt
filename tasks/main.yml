@@ -5,8 +5,8 @@
   - name: replace sources.list
     replace:
       dest: "{{ nakahiro386_apt_sources_list_path }}"
-      regexp: 'http://[^ ]+/ubuntu/'
-      replace: 'mirror://mirrors.ubuntu.com/mirrors.txt'
+      regexp: "{{ nakahiro386_apt_sources_list_regexp }}"
+      replace: "{{ nakahiro386_apt_sources_list_replace }}"
       backup: yes
     register: sources_list
 
