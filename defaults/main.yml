@@ -1,6 +1,8 @@
 ---
 # defaults file for nakahiro386.apt
 nakahiro386_apt_sources_list_path: "/etc/apt/sources.list"
+nakahiro386_apt_sources_list_regexp: "http://[^ ]+/ubuntu/"
+nakahiro386_apt_sources_list_replace: "mirror://mirrors.ubuntu.com/mirrors.txt"
 
 nakahiro386_apt_cache_valid_time: 3600
 
